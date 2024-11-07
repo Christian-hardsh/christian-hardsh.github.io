@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loja Apple</title>
+    <link rel="stylesheet" href="../christian-hardsh.github.io/css/aula26.css">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="logo">Apple</div>
+            <div class="menu-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <ul class="nav-list">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="aula1.html">Sobre</a></li>
+                <li><a href="aula2.html">iPhone</a></li>
+                <li><a href="ipad.html">iPad</a></li>
+                <li><a href="applewatch.html">Apple Watch</a></li>
+                <li><a href="fone.html">Fones de Ouvido</a></li>
+                <li><a href="macbook.html">MacBook</a></li>
+                <li><a href="airbook.html">AirBook</a></li>
+                <li><a href="acessorios.html">Acessórios</a></li>
+                <li><a href="tvecasa.html">TV e Casa</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="carousel">
+            <div class="carousel-wrapper">
+                <div class="carousel-slide">
+                    <img src="img/appletv.jpg" alt="Produto 1">
+                </div>
+                <div class="carousel-slide">
+                    <img src="img/applemusic.jpg" alt="Produto 2">
+                </div>
+                <div class="carousel-slide">
+                    <img src="img/ipadpro.jpg" alt="Produto 3">
+                </div>
+            </div>
+            <button class="carousel-button prev" onclick="moveSlide(-1)">&#10094;</button>
+            <button class="carousel-button next" onclick="moveSlide(1)">&#10095;</button>
+        </section>
+
+        <div class="banner">
+            <img src="img/iphone16.jpg" height="600" width="1903" alt="iPhone 16">
+        </div>
+        <div class="banner">
+            <img src="img/applemusic.jpg" height="600" width="1903" alt="Apple Music">
+        </div>
+        <div class="banner">
+            <img src="img/appletv.jpg" height="600" width="1903" alt="Apple TV">
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Loja Apple. Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        const menuToggle = document.getElementById('mobile-menu');
+        const navList = document.querySelector('.nav-list');
+
+        menuToggle.addEventListener('click', () => {
+            navList.classList.toggle('active');
+        });
+
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.carousel-slide');
+
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                slide.style.display = (i === index) ? 'block' : 'none';
+            });
+        }
+
+        function moveSlide(n) {
+            currentSlide += n;
+            if (currentSlide >= slides.length) {
+                currentSlide = 0;
+            }
+            if (currentSlide < 0) {
+                currentSlide = slides.length - 1;
+            }
+            showSlide(currentSlide);
+        }
+
+        showSlide(currentSlide);
+    </script>
+</body>
+
+</html>
